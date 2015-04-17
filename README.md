@@ -6,13 +6,14 @@ jQuery Autosize **updated for meteor 0.9.0** ("a plugin to automatically adjust 
 ## Installation
 
 1. `meteor add copleykj:jquery-autosize`
-1. Call `$(selector).autosize()` in your `Template.templateName.rendered` callback, where `selector` is a jQuery selector.
+1. Call `this.$(selector).autosize()` in your `Template.templateName.onRendered(…)` callback, where `selector` is a jQuery selector.
 
 Example:
 
 ````javascript
-$textarea = ('#textarea-selector', $(this.firstNode)); // Second argument establishes jQuery context
-$textarea.autosize();
+Template.templateName.onRendered({
+  this.$('#textarea-selector').autosize(); // `this.$` scopes queries to the current template
+});
 ````
 
 ## Documentation
